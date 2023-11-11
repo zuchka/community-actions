@@ -14,6 +14,6 @@ export async function run(): Promise<void> {
       'X-GitHub-Api-Version': '2022-11-28'
     }
   })
-  console.log(response.status)
+  console.log(response)
   core.setOutput('result', response)
 }
