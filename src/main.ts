@@ -1,26 +1,28 @@
 import * as core from '@actions/core'
-import { wait } from './wait'
+import * as github from '@actions/github'
 
-/**
- * The main function for the action.
- * @returns {Promise<void>} Resolves when the action is complete.
- */
+const org = core.getInput('organization', { required: true })
+const username = core.getInput('username', { required: true })
+const token = core.getInput('token', { required: true })
+
+const octokit = new (github.getOctokit as any)(token)
+
 export async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
-
-    // Debug logs are only output if the `ACTIONS_STEP_DEBUG` secret is true
-    core.debug(`Waiting ${ms} milliseconds ...`)
-
-    // Log the current timestamp, wait, then log the new timestamp
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
-
-    // Set outputs for other workflow steps to use
-    core.setOutput('time', new Date().toTimeString())
-  } catch (error) {
-    // Fail the workflow run if an error occurs
-    if (error instanceof Error) core.setFailed(error.message)
+    const isMember = await octokit.rest.orgs.checkMembershipForUser({
+      org,
+      username
+    })
+    if (isMember.status === 204) {
+      core.setOutput('result', true)
+    }
+  } catch (error: any) {
+    if (error.status === 404) {
+      core.setOutput('result', false)
+    } else {
+      console.error(
+        `An error occurred while checking if the repository is starred: ${error}`
+      )
+    }
   }
 }
