@@ -29925,7 +29925,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.run = void 0;
 const core = __importStar(__nccwpck_require__(2186));
 const github = __importStar(__nccwpck_require__(5438));
-const org = core.getInput('organization', { required: true });
+const org = core.getInput('org', { required: true });
 const username = core.getInput('username', { required: true });
 const token = core.getInput('token', { required: true });
 const octokit = new github.getOctokit(token);

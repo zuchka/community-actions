@@ -1,7 +1,7 @@
 import * as core from '@actions/core'
 import * as github from '@actions/github'
 
-const org = core.getInput('organization', { required: true })
+const org = core.getInput('org', { required: true })
 const username = core.getInput('username', { required: true })
 const token = core.getInput('token', { required: true })
 
