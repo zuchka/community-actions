@@ -1,7 +1,10 @@
-/**
- * The entrypoint for the action.
- */
-import { run } from './main'
+import * as core from '@actions/core'
 
-// eslint-disable-next-line @typescript-eslint/no-floating-promises
-run()
+const teammates = core.getInput('teammates', { required: true })
+const username = core.getInput('username', { required: true })
+
+export function run(): void {
+  const team: string[] = teammates.split('|')
+  const isMember: boolean = team.includes(username)
+  core.setOutput('result', isMember ? 'true' : 'false')
+}
