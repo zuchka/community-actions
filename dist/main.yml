@@ -1,0 +1,24 @@
+name: Is Organization Member Example
+
+on:
+  issues:
+    types: [opened, labeled]
+
+jobs:
+  is-member:
+    name: Is org member?
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v4
+      - name: Check if organization member
+        id: is_organization_member
+        uses: ./
+        with:
+          org: railwayapp
+          username: zuchka
+          token: ${{ secrets.GITHUB_TOKEN }}
+          teammates: zuchka|20k-ultra|foo
+      - name: Create Comment for external
+        run: echo "${{ steps.is_organization_member.outputs.result}}"

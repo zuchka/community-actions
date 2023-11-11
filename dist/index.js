@@ -25701,21 +25701,30 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.run = void 0;
 const core = __importStar(__nccwpck_require__(2186));
-const org = core.getInput('org', { required: true });
+const teammates = core.getInput('teammates', { required: true });
 const username = core.getInput('username', { required: true });
-const token = core.getInput('token', { required: true });
-async function run() {
-    const url = `https://api.github.com/orgs/${org}/members/${username}`;
-    const response = await fetch(url, {
-        method: 'GET',
-        headers: {
-            Authorization: token,
-            Accept: 'application/vnd.github+json',
-            'X-GitHub-Api-Version': '2022-11-28'
-        }
-    });
-    console.log(response.status);
-    core.setOutput('result', response);
+// const token = core.getInput('token', { required: true })
+// const org = 'railwayapp'
+// const username = 'bar'
+// const token = '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'
+// const teammates = 'zuchka|20k-ultra|foo'
+function run() {
+    console.log(teammates);
+    const team = teammates.split('|');
+    console.log(team);
+    const isMember = team.includes(username);
+    core.setOutput('result', isMember ? 'true' : 'false');
+    console.log(team);
+    console.log(isMember);
+    // const url = `https://api.github.com/orgs/${org}/members/${username}`
+    // const response = await fetch(url, {
+    //   method: 'GET',
+    //   headers: {
+    //     Authorization: token,
+    //     Accept: 'application/vnd.github+json',
+    //     'X-GitHub-Api-Version': '2022-11-28'
+    //   }
+    // })
 }
 exports.run = run;
 
