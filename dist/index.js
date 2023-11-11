@@ -25715,7 +25715,7 @@ async function run() {
         }
     });
     console.log(response.status);
-    core.setOutput('result', response.status === 204 ? 'true' : 'false');
+    core.setOutput('result', response);
 }
 exports.run = run;
 

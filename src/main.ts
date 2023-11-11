@@ -15,5 +15,5 @@ export async function run(): Promise<void> {
     }
   })
   console.log(response.status)
-  core.setOutput('result', response.status === 204 ? 'true' : 'false')
+  core.setOutput('result', response)
 }
