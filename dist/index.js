@@ -29931,9 +29931,16 @@ const token = core.getInput('token', { required: true });
 const octokit = new github.getOctokit(token);
 async function run() {
     try {
-        const isMember = await octokit.rest.orgs.checkMembershipForUser({
-            org,
-            username
+        // const isMember = await octokit.rest.orgs.checkMembershipForUser({
+        //   org,
+        //   username
+        // })
+        const isMember = await octokit.request('GET /orgs/{org}/members/{username}', {
+            org: org,
+            username: username,
+            headers: {
+                'X-GitHub-Api-Version': '2022-11-28'
+            }
         });
         // if (isMember.status === 204) {
         core.setOutput('result', isMember);
