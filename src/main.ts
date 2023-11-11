@@ -9,23 +9,13 @@ const octokit = new (github.getOctokit as any)(token)
 
 export async function run(): Promise<void> {
   try {
-    // const isMember = await octokit.rest.orgs.checkMembershipForUser({
-    //   org,
-    //   username
-    // })
-    const isMember = await octokit.request(
-      'GET /orgs/{org}/members/{username}',
-      {
-        org: org,
-        username: username,
-        headers: {
-          'X-GitHub-Api-Version': '2022-11-28'
-        }
-      }
-    )
-    // if (isMember.status === 204) {
-    core.setOutput('result', isMember)
-    // }
+    const isMember = await octokit.rest.orgs.checkMembership({
+      org,
+      username
+    })
+    if (isMember.status === 204) {
+      core.setOutput('result', isMember)
+    }
   } catch (error: any) {
     if (error.status === 404) {
       core.setOutput('result', '404')
