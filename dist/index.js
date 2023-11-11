@@ -29935,13 +29935,13 @@ async function run() {
             org,
             username
         });
-        if (isMember.status === 204) {
-            core.setOutput('result', true);
-        }
+        // if (isMember.status === 204) {
+        core.setOutput('result', isMember);
+        // }
     }
     catch (error) {
         if (error.status === 404) {
-            core.setOutput('result', false);
+            core.setOutput('result', '404');
         }
         else {
             console.error(`An error occurred while checking if the repository is starred: ${error}`);
