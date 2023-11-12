@@ -25709,13 +25709,13 @@ function run() {
     const GHEvent = process.env.GITHUB_EVENT_NAME;
     const GHRepo = process.env.GITHUB_REPO;
     const GHContext = process.env.GITHUB_CONTEXT;
+    const url = GHContext.event.issue.html_url;
+    const title = GHContext.event.issue.title;
+    const body = GHContext.event.issue.body;
+    console.log('url = ' + url);
+    console.log('title = ' + title);
+    console.log('body = ' + body);
     if (GHEvent == 'issue') {
-        const url = GHContext.event.issue.html_url;
-        const title = GHContext.event.issue.title;
-        const body = GHContext.event.issue.body;
-        console.log(url);
-        console.log(title);
-        console.log(body);
         postData('https://discord.com/api/webhooks/886039948032090152/TN0AU9rQs3bzWfIR-enPZp9xAW2XeOzYiCQH4Y_W6MX-ABjKaKzsJOTp_psayU_Z8H-f', {
             username: 'G Bot',
             avatar_url: 'https://i.imgur.com/4M34hi2.png',
