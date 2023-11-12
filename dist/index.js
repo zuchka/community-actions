@@ -25715,12 +25715,20 @@ function run() {
     console.log('repo = ' + ghRepo);
     console.log('body = ' + ghBody);
     console.log('url = ' + ghUrl);
-    console.log('repo = ' + ghTitle);
+    console.log('title = ' + ghTitle);
     // if (isMember) {
     postData('https://discord.com/api/webhooks/886039948032090152/TN0AU9rQs3bzWfIR-enPZp9xAW2XeOzYiCQH4Y_W6MX-ABjKaKzsJOTp_psayU_Z8H-f', {
         username: 'G Bot',
         avatar_url: 'https://i.imgur.com/4M34hi2.png',
-        content: `An external contributor just created a new ${ghEvent} in ${ghRepo}.`
+        content: `new ${ghEvent} in ${ghRepo} from a community member.`,
+        embeds: [
+            {
+                title: ghTitle,
+                url: ghUrl,
+                description: ghBody,
+                color: 15258703
+            }
+        ]
     });
     // }
 }

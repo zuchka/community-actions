@@ -15,7 +15,7 @@ export function run(): any {
   console.log('repo = ' + ghRepo)
   console.log('body = ' + ghBody)
   console.log('url = ' + ghUrl)
-  console.log('repo = ' + ghTitle)
+  console.log('title = ' + ghTitle)
 
   // if (isMember) {
   postData(
@@ -23,7 +23,15 @@ export function run(): any {
     {
       username: 'G Bot',
       avatar_url: 'https://i.imgur.com/4M34hi2.png',
-      content: `An external contributor just created a new ${ghEvent} in ${ghRepo}.`
+      content: `new ${ghEvent} in ${ghRepo} from a community member.`,
+      embeds: [
+        {
+          title: ghTitle,
+          url: ghUrl,
+          description: ghBody,
+          color: 15258703
+        }
+      ]
     }
   )
   // }
