@@ -25707,6 +25707,9 @@ function run() {
     const team = teammates.split('|');
     const isMember = team.includes(username);
     core.setOutput('result', isMember ? 'true' : 'false');
+    console.log('teammates =' + teammates);
+    console.log('team =' + team);
+    console.log('isMember =' + isMember);
 }
 exports.run = run;
 
