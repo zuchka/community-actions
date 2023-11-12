@@ -10,6 +10,8 @@ export function run(): any {
   const ghRepo = stripQuotes(process.env.GITHUB_REPO)
   const ghUrl = stripQuotes(process.env.GITHUB_ISSUE_URL)
 
+  core.setOutput('result', isMember ? 'true' : 'false')
+
   if (!isMember) {
     postData(webhook, {
       username: 'Railway Bot',
