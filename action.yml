@@ -1,18 +1,15 @@
 name: "Is user an org member?"
-description: "returns true if author is org member"
+description: "triggers a webhook for all non-org members"
 inputs:
-  # org:
-  #   description: "The organization name"
-  #   required: true
   teammates:
     description: "all Railway staff"
     required: true
   username:
     description: "author of issue or PR"
     required: true
-  # token:
-  #   description: "GitHub  token"
-  #   required: true
+  webhook:
+    description: "the webhook URL"
+    required: true
 runs:
   using: "node20"
   main: "dist/index.js"

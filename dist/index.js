@@ -25729,7 +25729,7 @@ async function postData(url = '', data = {}) {
         },
         body: JSON.stringify(data)
     });
-    console.log('response code = ' + response.status);
+    console.log('Webhook sent. response code = ' + response.status);
     return response.status;
 }
 function stripQuotes(envVar) {
