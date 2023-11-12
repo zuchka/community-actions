@@ -7,7 +7,7 @@ export function run(): any {
   try {
     const team: string[] = teammates.split('|')
     const isMember: boolean = team.includes(username)
-    core.setOutput('result', isMember)
+    core.setOutput('result', isMember ? 'true' : 'false')
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
   }

@@ -25707,7 +25707,7 @@ function run() {
     try {
         const team = teammates.split('|');
         const isMember = team.includes(username);
-        core.setOutput('result', isMember);
+        core.setOutput('result', isMember ? 'true' : 'false');
     }
     catch (error) {
         if (error instanceof Error)
