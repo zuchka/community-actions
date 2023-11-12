@@ -26,20 +26,34 @@ export function run(): any {
       content: `new ${ghEvent} in ${ghRepo} from a community member.`,
       embeds: [
         {
-          title: ghTitle,
-          url: ghUrl,
-          description: ghBody,
+          author: {
+            name: 'Birdie♫',
+            url: ghUrl,
+            icon_url: 'https://i.imgur.com/R66g1Pe.jpg'
+          },
+          title: 'Title',
+          url: 'https://google.com/',
+          description:
+            'Text message. You can use Markdown here. *Italic* **bold** __underline__ ~~strikeout~~ [hyperlink](https://google.com) `code`',
           color: 15258703,
           fields: [
             {
               name: 'Text',
-              value: `Text = ${ghBody}`,
+              value: 'More text',
               inline: true
             },
             {
               name: 'Even more text',
               value: 'Yup',
               inline: true
+            },
+            {
+              name: 'Use `"inline": true` parameter, if you want to display fields in the same line.',
+              value: 'okay...'
+            },
+            {
+              name: 'Thanks!',
+              value: "You're welcome :wink:"
             }
           ],
           thumbnail: {
