@@ -25723,10 +25723,10 @@ function run() {
         content: `new ${ghEvent} in ${ghRepo} from a community member.`,
         embeds: [
             {
-                title: ghTitle,
-                url: ghUrl,
-                description: ghBody,
-                color: 15258703
+                title: 'ghTitle',
+                url: 'ghUrl',
+                description: 'ghBody',
+                color: '15258703'
             }
         ]
     });
