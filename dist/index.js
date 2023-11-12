@@ -25706,11 +25706,21 @@ const username = core.getInput('username', { required: true });
 function run() {
     const team = teammates.split('|');
     const isMember = team.includes(username);
-    const ghEvent = process.env.GITHUB_EVENT_NAME;
-    const ghRepo = process.env.GITHUB_REPO;
-    const ghUrl = process.env.GITHUB_ISSUE_URL;
-    const ghTitle = process.env.GITHUB_ISSUE_TITLE;
-    const ghBody = process.env.GITHUB_ISSUE_BODY;
+    const ghEvent = process.env.GITHUB_EVENT_NAME
+        ? process.env.GITHUB_EVENT_NAME.slice(1, -1)
+        : '';
+    const ghRepo = process.env.GITHUB_REPO
+        ? process.env.GITHUB_REPO.slice(1, -1)
+        : '';
+    const ghUrl = process.env.GITHUB_ISSUE_URL
+        ? process.env.GITHUB_ISSUE_URL.slice(1, -1)
+        : '';
+    const ghTitle = process.env.GITHUB_ISSUE_TITLE
+        ? process.env.GITHUB_ISSUE_TITLE.slice(1, -1)
+        : '';
+    const ghBody = process.env.GITHUB_ISSUE_BODY
+        ? process.env.GITHUB_ISSUE_BODY.slice(1, -1)
+        : '';
     console.log('event = ' + ghEvent);
     console.log('repo = ' + ghRepo);
     console.log('body = ' + ghBody);
