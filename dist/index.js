@@ -25723,10 +25723,32 @@ function run() {
         content: `new ${ghEvent} in ${ghRepo} from a community member.`,
         embeds: [
             {
-                title: 'ghTitle',
-                url: 'ghUrl',
-                description: 'ghBody',
-                color: '15258703'
+                title: ghTitle,
+                url: ghUrl,
+                description: ghBody,
+                color: 15258703,
+                fields: [
+                    {
+                        name: 'Text',
+                        value: `Text = ${ghBody}`,
+                        inline: true
+                    },
+                    {
+                        name: 'Even more text',
+                        value: 'Yup',
+                        inline: true
+                    }
+                ],
+                thumbnail: {
+                    url: 'https://upload.wikimedia.org/wikipedia/commons/3/38/4-Nature-Wallpapers-2014-1_ukaavUI.jpg'
+                },
+                image: {
+                    url: 'https://upload.wikimedia.org/wikipedia/commons/5/5a/A_picture_from_China_every_day_108.jpg'
+                },
+                footer: {
+                    text: 'Woah! So cool! :smirk:',
+                    icon_url: 'https://i.imgur.com/fKL31aD.jpg'
+                }
             }
         ]
     });
