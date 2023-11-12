@@ -25703,17 +25703,13 @@ exports.run = void 0;
 const core = __importStar(__nccwpck_require__(2186));
 const teammates = core.getInput('teammates', { required: true });
 const username = core.getInput('username', { required: true });
-async function run() {
+function run() {
     try {
         const team = teammates.split('|');
         const isMember = team.includes(username);
-        console.log('teammates = ' + teammates);
-        console.log('team = ' + team);
-        console.log('isMember = ' + isMember);
         core.setOutput('result', isMember);
     }
     catch (error) {
-        // Fail the workflow run if an error occurs
         if (error instanceof Error)
             core.setFailed(error.message);
     }
