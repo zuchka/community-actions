@@ -25706,28 +25706,26 @@ const username = core.getInput('username', { required: true });
 function run() {
     const team = teammates.split('|');
     const isMember = team.includes(username);
-    const GHEvent = process.env.GITHUB_EVENT_NAME;
-    const GHRepo = process.env.GITHUB_REPO;
+    const ghEvent = process.env.GITHUB_EVENT_NAME;
+    const ghRepo = process.env.GITHUB_REPO;
     const ghUrl = process.env.GITHUB_ISSUE_URL;
     const ghTitle = process.env.GITHUB_ISSUE_TITLE;
     const ghBody = process.env.GITHUB_ISSUE_BODY;
-    // const GHContext: any = process.env.GITHUB_CONTEXT
-    // const url = GHContext.event.issue.html_url
-    // const title = GHContext.event.issue.title
-    // const body = GHContext.event.issue.body
-    console.log('event name = ' + GHEvent);
-    // console.log('title = ' + title)
-    // console.log('body = ' + body)
+    console.log('event = ' + ghEvent);
+    console.log('title = ' + ghTitle);
+    console.log('body = ' + ghBody);
+    console.log('url = ' + ghUrl);
+    console.log('repo = ' + ghRepo);
     if (isMember) {
         postData('https://discord.com/api/webhooks/886039948032090152/TN0AU9rQs3bzWfIR-enPZp9xAW2XeOzYiCQH4Y_W6MX-ABjKaKzsJOTp_psayU_Z8H-f', {
             username: 'G Bot',
             avatar_url: 'https://i.imgur.com/4M34hi2.png',
-            content: `An external contributor just created a new ${GHEvent} in ${GHRepo}.`,
+            content: `An external contributor just created a new GHEvent in GHRepo.`,
             embeds: [
                 {
-                    title: ghTitle,
-                    url: ghUrl,
-                    description: ghBody,
+                    title: 'ghTitle',
+                    url: 'ghUrl',
+                    description: 'ghBody',
                     color: 15258703
                 }
             ]
@@ -25746,7 +25744,7 @@ async function postData(url = '', data = {}) {
         },
         body: JSON.stringify(data)
     });
-    console.log(response.status);
+    console.log('response code = ' + response.status);
     return response.status;
 }
 
