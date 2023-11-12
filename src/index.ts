@@ -6,5 +6,5 @@ const username = core.getInput('username', { required: true })
 export function run(): void {
   const team: string[] = teammates.split('|')
   const isMember: boolean = team.includes(username)
-  core.setOutput('result', isMember ? 'true' : 'false')
+  core.setOutput('result', isMember)
 }
