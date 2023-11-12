@@ -25725,11 +25725,11 @@ function run() {
             {
                 author: {
                     name: 'Birdie♫',
-                    url: 'https://www.reddit.com/r/cats/',
+                    url: `${ghUrl}`,
                     icon_url: 'https://i.imgur.com/R66g1Pe.jpg'
                 },
                 title: 'Title',
-                url: 'https://google.com/',
+                url: `${ghUrl}`,
                 description: 'Text message. You can use Markdown here. *Italic* **bold** __underline__ ~~strikeout~~ [hyperlink](https://google.com) `code`',
                 color: 15258703,
                 fields: [
