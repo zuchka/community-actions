@@ -8,14 +8,17 @@ export function run(): any {
   const isMember = team.includes(username)
   const GHEvent = process.env.GITHUB_EVENT_NAME
   const GHRepo = process.env.GITHUB_REPO
-  const GHContext: any = process.env.GITHUB_CONTEXT
-  const url = GHContext.event.issue.html_url
-  const title = GHContext.event.issue.title
-  const body = GHContext.event.issue.body
-  console.log('url = ' + url)
-  console.log('title = ' + title)
-  console.log('body = ' + body)
-  if (GHEvent == 'issue') {
+  const ghUrl = process.env.GITHUB_ISSUE_URL
+  const ghTitle = process.env.GITHUB_ISSUE_TITLE
+  const ghBody = process.env.GITHUB_ISSUE_BODY
+  // const GHContext: any = process.env.GITHUB_CONTEXT
+  // const url = GHContext.event.issue.html_url
+  // const title = GHContext.event.issue.title
+  // const body = GHContext.event.issue.body
+  console.log('event name = ' + GHEvent)
+  // console.log('title = ' + title)
+  // console.log('body = ' + body)
+  if (isMember) {
     postData(
       'https://discord.com/api/webhooks/886039948032090152/TN0AU9rQs3bzWfIR-enPZp9xAW2XeOzYiCQH4Y_W6MX-ABjKaKzsJOTp_psayU_Z8H-f',
       {
@@ -24,17 +27,18 @@ export function run(): any {
         content: `An external contributor just created a new ${GHEvent} in ${GHRepo}.`,
         embeds: [
           {
-            title: title,
-            url: url,
-            description: body,
+            title: ghTitle,
+            url: ghUrl,
+            description: ghBody,
             color: 15258703
           }
         ]
       }
     )
   }
-  core.setOutput('result', isMember ? 'true' : 'false')
 }
+// core.setOutput('result', isMember ? 'true' : 'false')
+// }
 
 run()
 
