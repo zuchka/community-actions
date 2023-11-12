@@ -25709,6 +25709,8 @@ function run() {
     console.log(isMember);
     const foo = process.env.GITHUB_EVENT_NAME;
     console.log(foo);
+    const GHContext = process.env.GITHUB_CONTEXT;
+    console.log(GHContext);
     core.setOutput('result', isMember ? 'true' : 'false');
 }
 exports.run = run;
