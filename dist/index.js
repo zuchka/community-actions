@@ -25704,15 +25704,9 @@ const core = __importStar(__nccwpck_require__(2186));
 const teammates = core.getInput('teammates', { required: true });
 const username = core.getInput('username', { required: true });
 function run() {
-    try {
-        const team = teammates.split('|');
-        const isMember = team.includes(username);
-        core.setOutput('result', isMember ? 'true' : 'false');
-    }
-    catch (error) {
-        if (error instanceof Error)
-            core.setFailed(error.message);
-    }
+    const team = teammates.split('|');
+    const isMember = team.includes(username);
+    core.setOutput('result', isMember ? 'true' : 'false');
 }
 exports.run = run;
 
