@@ -23,12 +23,12 @@ export function run(): any {
     {
       username: 'G Bot',
       avatar_url: 'https://i.imgur.com/4M34hi2.png',
-      content: `new ${ghEvent} in ${ghRepo} from a community member.`,
+      content: `new ${ghEvent} in ${ghRepo} from a community member.\n${ghUrl}`,
       embeds: [
         {
           author: {
             name: 'Birdie♫',
-            url: ghUrl,
+            url: 'https://www.reddit.com/r/cats/',
             icon_url: 'https://i.imgur.com/R66g1Pe.jpg'
           },
           title: 'Title',

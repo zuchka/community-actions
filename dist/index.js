@@ -25720,12 +25720,12 @@ function run() {
     postData('https://discord.com/api/webhooks/886039948032090152/TN0AU9rQs3bzWfIR-enPZp9xAW2XeOzYiCQH4Y_W6MX-ABjKaKzsJOTp_psayU_Z8H-f', {
         username: 'G Bot',
         avatar_url: 'https://i.imgur.com/4M34hi2.png',
-        content: `new ${ghEvent} in ${ghRepo} from a community member.`,
+        content: `new ${ghEvent} in ${ghRepo} from a community member.\n${ghUrl}`,
         embeds: [
             {
                 author: {
                     name: 'Birdie♫',
-                    url: ghUrl,
+                    url: 'https://www.reddit.com/r/cats/',
                     icon_url: 'https://i.imgur.com/R66g1Pe.jpg'
                 },
                 title: 'Title',
