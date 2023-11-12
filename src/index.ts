@@ -7,12 +7,12 @@ export function run(): any {
   const team = teammates.split('|')
   const isMember = team.includes(username)
   const ghEvent = process.env.GITHUB_EVENT_NAME
-  // const ghContext = process.env.GITHUB_CONTEXT
+  const ghRepo = process.env.GITHUB_REPO
   const ghUrl = process.env.GITHUB_ISSUE_URL
   const ghTitle = process.env.GITHUB_ISSUE_TITLE
   const ghBody = process.env.GITHUB_ISSUE_BODY
   console.log('event = ' + ghEvent)
-  // console.log('context = ' + ghContext)
+  console.log('repo = ' + ghRepo)
   console.log('body = ' + ghBody)
   console.log('url = ' + ghUrl)
   console.log('repo = ' + ghTitle)
@@ -23,7 +23,7 @@ export function run(): any {
     {
       username: 'G Bot',
       avatar_url: 'https://i.imgur.com/4M34hi2.png',
-      content: 'An external contributor just created a new GHEvent in GHRepo.'
+      content: `An external contributor just created a new ${ghEvent} in ${ghRepo}.`
     }
   )
   // }
