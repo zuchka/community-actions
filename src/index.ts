@@ -18,8 +18,6 @@ export function run(): any {
   if (!isMember) {
     console.log( 'sending webhook for: ' + ghUrl + ' ...')
     postData(webhook, {
-      username: 'Railway Community Bot',
-      avatar_url: 'https://railway.app/brand/logo-dark.png',
       content: `new community activity in ${ghRepo}:\n\n${ghUrl}\n\n`
     })
   } else {
