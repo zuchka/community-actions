@@ -25708,14 +25708,19 @@ function run() {
     const team = teammates.split('|');
     const isMember = team.includes(username);
     const ghRepo = stripQuotes(process.env.GITHUB_REPO);
-    const ghUrl = stripQuotes(process.env.GITHUB_ISSUE_URL);
+    const ghIssueUrl = stripQuotes(process.env.GITHUB_ISSUE_URL);
+    const ghPrUrl = stripQuotes(process.env.GITHUB_PR_URL);
+    const ghEvent = stripQuotes(process.env.GITHUB_EVENT_NAME);
+    const ghUrl = ghEvent === 'pull_request' ? ghPrUrl : ghIssueUrl;
     core.setOutput('result', isMember ? 'true' : 'false');
     if (!isMember) {
         postData(webhook, {
-            username: 'Railway Bot',
-            avatar_url: 'https://i.imgur.com/4M34hi2.png',
-            content: `new community activity in ${ghRepo}:\n\n${ghUrl}\n\n`
+            username: 'Railway Community Bot',
+            avatar_url: 'https://railway.app/brand/logo-dark.png',
+            content: `new community activity in ${ghRepo}:\n\n${ghUrl}\n\n`,
+            embeds: null
         });
+        console.log('sending webhook for: ' + ghUrl + ' ...');
     }
     else {
         console.log('Skipping webhook: author is an org member');

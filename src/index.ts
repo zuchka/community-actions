@@ -11,8 +11,8 @@ export function run(): any {
   const ghIssueUrl = stripQuotes(process.env.GITHUB_ISSUE_URL)
   const ghPrUrl = stripQuotes(process.env.GITHUB_PR_URL)
   const ghEvent = stripQuotes(process.env.GITHUB_EVENT_NAME)
-  
-  const ghUrl = ghEvent === 'pull_request' ? ghPrUrl : ghIssueUrl  
+
+  const ghUrl = ghEvent === 'pull_request' ? ghPrUrl : ghIssueUrl
   core.setOutput('result', isMember ? 'true' : 'false')
 
   if (!isMember) {
@@ -22,7 +22,7 @@ export function run(): any {
       content: `new community activity in ${ghRepo}:\n\n${ghUrl}\n\n`,
       embeds: null
     })
-    console.log( 'sending webhook for: ' + ghUrl + ' ...')
+    console.log('sending webhook for: ' + ghUrl + ' ...')
   } else {
     console.log('Skipping webhook: author is an org member')
   }
