@@ -10,9 +10,9 @@ export function run(): any {
   const ghRepo = stripQuotes(process.env.GITHUB_REPO)
   const ghIssueUrl = stripQuotes(process.env.GITHUB_ISSUE_URL)
   const ghPrUrl = stripQuotes(process.env.GITHUB_PR_URL)
-
-  const ghUrl = !ghIssueUrl ? ghPrUrl : ghIssueUrl
-
+  const ghEvent = stripQuotes(process.env.GITHUB_EVENT_NAME)
+  
+  const ghUrl = ghEvent === 'pull_request' ? ghPrUrl : ghIssueUrl  
   core.setOutput('result', isMember ? 'true' : 'false')
 
   if (!isMember) {
