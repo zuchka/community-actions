@@ -10,7 +10,7 @@ export function run(): any {
   const ghRepo = stripQuotes(process.env.GITHUB_REPO)
   const ghIssueUrl = stripQuotes(process.env.GITHUB_ISSUE_URL)
   const ghPrUrl = stripQuotes(process.env.GITHUB_PR_URL)
-  const ghEvent = stripQuotes(process.env.GITHUB_EVENT_NAME)
+  const ghEvent = process.env.GITHUB_EVENT_NAME
   console.log('issue URL =' + ghIssueUrl)
   console.log('Pr url ' + ghPrUrl)
   console.log('GH Event = ' + ghEvent)
