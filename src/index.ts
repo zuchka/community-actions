@@ -16,10 +16,13 @@ export function run(): any {
   core.setOutput('result', isMember ? 'true' : 'false')
 
   if (!isMember) {
-    console.log( 'sending webhook for: ' + ghUrl + ' ...')
     postData(webhook, {
-      content: `new community activity in ${ghRepo}:\n\n${ghUrl}\n\n`
+      username: 'Railway Community Bot',
+      avatar_url: 'https://railway.app/brand/logo-dark.png',
+      content: `new community activity in ${ghRepo}:\n\n${ghUrl}\n\n`,
+      embeds: null
     })
+    console.log( 'sending webhook for: ' + ghUrl + ' ...')
   } else {
     console.log('Skipping webhook: author is an org member')
   }
