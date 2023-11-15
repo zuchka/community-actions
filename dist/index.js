@@ -25713,6 +25713,7 @@ function run() {
     const ghEvent = stripQuotes(process.env.GITHUB_EVENT_NAME);
     console.log('issue URL =' + ghIssueUrl);
     console.log('Pr url ' + ghPrUrl);
+    console.log('GH Event = ' + ghEvent);
     const ghUrl = ghEvent == 'pull_request' ? ghPrUrl : ghIssueUrl;
     core.setOutput('result', isMember ? 'true' : 'false');
     console.log('set URL = ' + ghUrl);
