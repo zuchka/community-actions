@@ -11,12 +11,12 @@ export function run(): any {
   const ghIssueUrl = stripQuotes(process.env.GITHUB_ISSUE_URL)
   const ghPrUrl = stripQuotes(process.env.GITHUB_PR_URL)
 
-  const ghUrl = ghIssueUrl == '' ? ghPrUrl : ghIssueUrl
+  const ghUrl = !ghIssueUrl ? ghPrUrl : ghIssueUrl
 
   core.setOutput('result', isMember ? 'true' : 'false')
 
   if (!isMember) {
-    console.log( `sending webhook for ${ghUrl}...`)
+    console.log( 'sending webhook for: ' + ghUrl + ' ...')
     postData(webhook, {
       username: 'Railway Bot',
       avatar_url: 'https://railway.app/brand/logo-dark.png',
