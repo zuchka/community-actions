@@ -13,7 +13,8 @@ export function run(): any {
   const ghEvent = stripQuotes(process.env.GITHUB_EVENT_NAME)
   console.log('issue URL =' + ghIssueUrl)
   console.log('Pr url ' + ghPrUrl)
-  const ghUrl = ghEvent == 'pull_request' ? ghPrUrl : ghIssueUrl
+  console.log('GH Event = ' + ghEvent)
+  const ghUrl = (ghEvent == 'pull_request' ? ghPrUrl : ghIssueUrl)
   core.setOutput('result', isMember ? 'true' : 'false')
   console.log('set URL = ' + ghUrl)
   //   if (!isMember) {
